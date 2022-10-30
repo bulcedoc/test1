@@ -129,3 +129,5 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets') #this is you assets folder.
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+"import django_heroku" 
+"django_heroku.settings(locals())" 
