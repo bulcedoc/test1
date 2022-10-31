@@ -25,7 +25,8 @@ from django.conf import  settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<str:to>/',check, name="check"),
-    path('',see, name="see")
+    path('',see, name="see"),
+    path('results/<str:ro>/',resu, name="resu"),
 
 
 ]

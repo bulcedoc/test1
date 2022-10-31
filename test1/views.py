@@ -57,3 +57,56 @@ def check(request , to):
 
 def see(request):
   return HttpResponse("Hello")
+def resu(request,ro):
+ subject_codes = []
+ subject_names = []
+ subject_grades = []
+ subject_credits = []
+ from selenium import webdriver
+ from selenium.webdriver.common.by import By
+ from selenium.webdriver.chrome.options import Options
+ import os
+ chrome_options = webdriver.ChromeOptions()
+ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+ chrome_options.add_argument("--headless")
+ chrome_options.add_argument("--disable-dev-shm-usage")
+ chrome_options.add_argument("--no-sandbox")
+ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+ roll_number = str(ro).strip().upper()
+ exam_code = [1323,1358,1404,1430,1467,1504,1356,1363,1381,1435,1448,1481,1503,1391,1425,1449,1496,1560,1437,1447,1476,1501,1565,1454,1491,1550,1502,1555,1545,1580]
+ for code in exam_code:
+    code = str(code)
+    driver.get("http://results.jntuh.ac.in/resultAction?degree=btech&examCode="+code+"&etype=r17&result=null&grad=null&type=null&htno="+roll_number)
+    try:
+       text_value = driver.find_element(By.CSS_SELECTOR,('#myForm > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div')).text
+       if text_value=='invalid hallticket number':
+        pass
+    except:
+       subject = driver.find_elements(By.XPATH,('/html/body/form/div[1]/table/tbody/tr/td[1]'))
+       for e in subject[1:]:
+          subject_codes.append(e.text)
+       sn = driver.find_elements(By.XPATH,('/html/body/form/div[1]/table/tbody/tr/td[2]'))      
+       for e in sn[1:]:
+          subject_names.append(e.text)
+       sg = driver.find_elements(By.XPATH,('/html/body/form/div[1]/table/tbody/tr/td[3]'))      
+       for e in sg[1:]:
+          subject_grades.append(e.text)
+       sc = driver.find_elements(By.XPATH,('/html/body/form/div[1]/table/tbody/tr/td[4]'))   
+       for e in sc[1:]:
+          subject_credits.append(e.text)
+ driver.quit()
+ deta = []
+ sof = {}
+ for i in range(len(subject_codes)):
+  deta.append({'code': subject_codes[i], 's_name': subject_names[i], 's_grade': subject_grades[i], 's_credit': subject_credits[i]})
+ print(deta)
+ for i in deta:
+  sof.update({ i['code']: [i['s_name'],i['s_grade'],i['s_credit']]})
+ c = []
+ for i in sof: 
+  c.append([i,sof.get(i)[0],sof.get(i)[1],sof.get(i)[2]])
+
+ context = {
+    'c':c
+       }    
+ return render(request,'att2.html',context)

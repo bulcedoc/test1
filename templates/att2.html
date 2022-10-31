@@ -1,0 +1,110 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Attendance</title>
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="top">
+        <table >
+            <thead >
+                <td class="top_s_div"><h2>Name</h2></td>
+                <td class="top_s_div"><h2>Conducted</h2></td>
+                <td class="top_s_div"><h2>Attended</h2></td>
+                <td class="topdiv1"><h2>%</h2></td>
+            </thead>
+            {% for i in c %}
+            <tbody >
+                <td class="top_m_div"><h3>{{i.0}}</h3></td>
+                <td class="top_m_div"><h3>{{i.1}}</h3></td>
+                <td class="top_m_div"><h3>{{i.2}}</h3></td>
+                <td class="top_m_div"><h3>{{i.0}}</h3></td>
+            </tbody>
+            {% endfor %}
+            <tfoot >
+                <td class="top_t_div"><h2>Total</h2></td>
+                <td class="top_t_div"><h2>Check</h2></td>
+                <td class="top_t_div"><h2>Check</h2></td>
+                <td class="topdiv1"><h2>Check</h2></td>
+            </tfoot>
+            
+        </table>
+    </div>
+     <style>
+        .top_s_div{
+        background-color: rgb(5, 26, 57);
+        color: rgb(105, 209, 0);
+        padding: 15px;
+        text-align: center;
+    }   
+    .top_m_div{
+        background-color: rgb(7, 33, 67);
+        color: rgb(105, 209, 0);
+        padding: 15px;
+        text-align: center;
+    }   
+    .top_t_div{
+        background-color: rgb(25, 42, 49);
+        color: rgb(105, 209, 0);
+        padding: 15px;
+        text-align: center;
+    }  
+    .topdiv1{
+        background-color: rgb(25, 42, 49);
+        color: rgb(105, 209, 0);
+        padding: 5px;
+        text-align: center;
+        width: 80px;
+    } 
+    
+    body{
+        margin: 0;
+        background-color: rgb(29, 23, 37);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    @media screen and (max-width: 480px) {
+        body {
+          background-color: rgb(29, 23, 37);
+          font-size: 10px;
+          display: flex;
+          justify-content: center;
+        }
+    
+        .topdiv1{
+            padding: 0px;
+            text-align: center;
+            width: 40px;
+        } 
+        .top_s_div{
+            background-color: rgb(5, 26, 57);
+            color: rgb(105, 209, 0);
+            padding: 8px;
+            text-align: center;
+        }   
+        .top_m_div{
+            background-color: rgb(7, 33, 67);
+            color: rgb(105, 209, 0);
+            padding: 8px;
+            text-align: center;
+        }   
+        .top_t_div{
+            background-color: rgb(25, 42, 49);
+            color: rgb(105, 209, 0);
+            padding: 8px;
+            text-align: center;
+        }  
+        .top{
+            width: auto;
+        }
+      }
+     </style>
+        
+    </body>
+    </html>
