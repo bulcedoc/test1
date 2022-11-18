@@ -11,7 +11,7 @@ def check(request , to):
  chrome_options.add_argument("--headless")
  chrome_options.add_argument("--disable-dev-shm-usage")
  chrome_options.add_argument("--no-sandbox")
- driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
  driver.get("http://tkrec.in/")
  driver.find_element(By.XPATH,('//*[@id="login-username"]')).send_keys(roll)
  driver.find_element(By.XPATH,('//*[@id="login-password"]')).send_keys(roll)
