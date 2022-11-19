@@ -71,7 +71,7 @@ def resu(request,ro):
  chrome_options.add_argument("--headless")
  chrome_options.add_argument("--disable-dev-shm-usage")
  chrome_options.add_argument("--no-sandbox")
- driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
  roll_number = str(ro).strip().upper()
  exam_code = [1323,1358,1404,1430,1467,1504,1356,1363,1381,1435,1448,1481,1503,1391,1425,1449,1496,1560,1437,1447,1476,1501,1565,1454,1491,1550,1502,1555,1545,1580]
  for code in exam_code:
